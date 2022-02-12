@@ -4,7 +4,7 @@
 #include "Utils.h"
 #include "SDL.h"
 
-int main()
+int main(int argc, char **argv)
 {
     SDL_Window *window = nullptr;
     SDL_Renderer *renderer = nullptr;
@@ -21,6 +21,18 @@ int main()
 
     SDL_Event e;
 
+    std::string romPath;
+
+    if (argc < 2)
+    {
+        std::cout << "No ROM file given, exiting..." << std::endl;
+        return -1;
+    }
+    else
+    {
+        romPath = argv[1];
+    }
+
     if (!init(&window, &renderer, DISPLAY_WIDTH * SCALE_FACTOR, DISPLAY_HEIGHT * SCALE_FACTOR))
     {
         printf("Failed to intialize!\n");
@@ -34,9 +46,9 @@ int main()
 
         Uint32 startTime = SDL_GetTicks();
 
-        if (!cpu.load_rom("../roms/sierpinski.ch8"))
+        if (!cpu.load_rom(romPath))
         {
-            std::cout << "rom file missing, exiting..." << std::endl;
+            std::cout << "ROM file missing, exiting..." << std::endl;
             return -1;
         }
 
