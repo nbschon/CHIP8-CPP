@@ -28,7 +28,7 @@ first argument:
 
 ## Features
 
-Just loads ROMs into memory and run them as they would've appeared
+Just loads ROMs into memory and runs them as they would've appeared
 in the 70's on something like the COSMAC VIP.
 
 The CHIP-8 was controlled with a keypad, with the
