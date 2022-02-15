@@ -46,7 +46,7 @@ int main(int argc, char **argv)
 
         Uint32 startTime = SDL_GetTicks();
 
-        if (!cpu.load_rom(romPath))
+        if (!cpu.loadROM(romPath))
         {
             std::cout << "ROM file missing, exiting..." << std::endl;
             return -1;

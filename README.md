@@ -9,7 +9,7 @@ C++ /SDL," I took a stab at creating a CHIP-8 emulator.
 In various programming / emulator development communities
 online, this is widely considered a rite of passage before
 moving on to more (relatively) advanced systems, like the
-Game Boy (Color) or Nintendo Entertainment System. 
+Game Boy (Color) or NES. 
 
 I've always been fascinated with retro gaming, emulation,
 etc., so I wanted to try and tackle a more trivial 
@@ -28,7 +28,7 @@ first argument:
 
 ## Features
 
-Load ROMs into memory and run them as they would've appeared
+Just loads ROMs into memory and run them as they would've appeared
 in the 70's on something like the COSMAC VIP.
 
 The CHIP-8 was controlled with a keypad, with the
@@ -57,7 +57,8 @@ the races.
 
 Some things I'd like to add in the future would be 
 a way to change the FPS in real time, since different
-CHIP-8 implementations ran at different speeds.
+CHIP-8 implementations ran at different speeds. Currently,
+sound is also unimplemented.
 
 Additionally, there's also the SUPER-CHIP, which extends
 the capabilities of the original interpreter with things 
