@@ -47,7 +47,7 @@ public:
     ~Chip8();
 
     void cpu_cycle();
-    bool load_rom(std::string path);
+    bool loadROM(const std::string& path);
     void get_input(SDL_Event* e);
 
     void realRender();

@@ -206,6 +206,8 @@ void Chip8::cpu_cycle()
                     pc = stack.top();
                     stack.pop();
                     break;
+                default:
+                    break;
             }
             break;
         case 0x1:
@@ -316,6 +318,8 @@ void Chip8::cpu_cycle()
                     variable_reg[secondNibble] = variable_reg[thirdNibble];
                     variable_reg[secondNibble] <<= 1;
                     break;
+                default:
+                    break;
             }
             break;
         case 0x9:
@@ -341,7 +345,7 @@ void Chip8::cpu_cycle()
             //DXYN: Draw display
             xCoord = variable_reg[secondNibble] % 64;
             yCoord = variable_reg[thirdNibble] % 32;
-            //std::cout << "width:" << (unsigned)fourthNibble << std::endl;
+
             variable_reg[0xF] = 0;
             for (int row = 0; row < fourthNibble && yCoord + row < SCREEN_HEIGHT; ++row)
             {
@@ -349,8 +353,6 @@ void Chip8::cpu_cycle()
                 for (int col = 0; col <= 8 && xCoord + col < SCREEN_WIDTH; ++col)
                 {
                     currentPixel = ((spriteData >> (8 - col)) & 0x01);
-
-                    //std::cout << "curr pix val: " << (unsigned)currentPixel << std::endl;
 
                     if (currentPixel == 1)
                     {
@@ -379,6 +381,8 @@ void Chip8::cpu_cycle()
                     {
                         pc += 2;
                     }
+                    break;
+                default:
                     break;
             }
             break;
@@ -409,6 +413,8 @@ void Chip8::cpu_cycle()
                             {
                                 variable_reg[i] = memory[index_reg + i];
                             }
+                            break;
+                        default:
                             break;
                     }
                     break;
@@ -506,7 +512,11 @@ void Chip8::cpu_cycle()
                     memory[index_reg + 1]  = variable_reg[secondNibble] % 100 / 10;
                     memory[index_reg + 2] = variable_reg[secondNibble] % 10;
                     break;
+                default:
+                    break;
             }
+            break;
+        default:
             break;
     }
 
@@ -558,7 +568,7 @@ void Chip8::realRender()
     SDL_RenderPresent(renderer);
 }
 
-bool Chip8::load_rom(std::string path)
+bool Chip8::loadROM(const std::string& path)
 {
     std::ifstream rom_file(path, std::ios::binary | std::ios::ate);
 
